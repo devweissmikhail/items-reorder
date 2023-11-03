@@ -1,4 +1,4 @@
-# reorder
+# items-reorder
 Array reorder items
 
 ### Peer dependencies
