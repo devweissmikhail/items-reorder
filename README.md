@@ -30,6 +30,6 @@ console.log(resultC);
 
 // Allowed variations
 
-reorder(items, [{ fromIndex: -1, toIndex: 0 }, { id: 0, overId: 1 }]);
-reorder(items, [{ fromIndex: -2, overId: 0 }, { id: 0, toIndex: 1 }]);
+reorder(items, [{ fromIndex: -1, toIndex: 0 }, { id: 0, overId: 1 }, ...more]);
+reorder(items, [{ fromIndex: -2, overId: 0 }, { id: 0, toIndex: 1 }, ...more]);
 ```
