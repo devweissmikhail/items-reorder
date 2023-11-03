@@ -7,7 +7,7 @@ type ReturnType = 'default' | 'ids';
 type Result<T, RT> = RT extends 'ids' ? T[] : Item<T>[];
 
 
-export function reorder<
+export function itemsReorder<
   T,
   RT extends ReturnType = 'default',
 >(
