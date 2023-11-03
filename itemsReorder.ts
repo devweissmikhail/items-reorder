@@ -4,18 +4,18 @@ import { arrayMoveMutable } from 'array-move';
 type Item<T> = { id: T; };
 type Data<T> = { id?: T; overId?: T; fromIndex?: number; toIndex?: number; };
 type ReturnType = 'default' | 'ids';
-type Result<I extends { id: unknown }, RT> = RT extends 'ids' ? I['id'][] : I[];
+type Result<T, I, R> = R extends 'ids' ? T[] : I[];
 
 
 export function itemsReorder<
   T,
   I extends Item<T>,
-  RT extends ReturnType = 'default',
+  R extends ReturnType = 'default',
 >(
   items: I[],
   data: Data<T> | Data<T>[],
-  returnType?: RT,
-): Result<I, RT> {
+  returnType?: R,
+): Result<T, I, R> {
 
   const itemIds = items.map(item => item.id);
   const dataB = Array.isArray(data) ? data : [data];
@@ -40,6 +40,6 @@ export function itemsReorder<
     : itemIds.map(itemId => items.find(item => item.id === itemId)!);
 
 
-  return result as Result<I, RT>;
+  return result as Result<T, I, R>;
 
 }
