@@ -3,18 +3,18 @@ import { arrayMoveMutable } from 'array-move';
 
 type Item<T> = { id: T; };
 type Data<T> = { id?: T; overId?: T; fromIndex?: number; toIndex?: number; };
-type ReturnType = 'default' | 'ids';
+type ResultFormat = 'default' | 'ids';
 type Result<T, I, R> = R extends 'ids' ? T[] : I[];
 
 
 export function itemsReorder<
   T,
   I extends Item<T>,
-  R extends ReturnType = 'default',
+  R extends ResultFormat = 'default',
 >(
   items: I[],
   data: Data<T> | Data<T>[],
-  returnType?: R,
+  resultFormat?: R,
 ): Result<T, I, R> {
 
   const itemIds = items.map(item => item.id);
@@ -35,7 +35,7 @@ export function itemsReorder<
   });
 
 
-  const result = returnType === 'ids'
+  const result = resultFormat === 'ids'
     ? itemIds
     : itemIds.map(itemId => items.find(item => item.id === itemId)!);
 
